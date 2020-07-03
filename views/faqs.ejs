@@ -1,0 +1,93 @@
+<%- include("partials/header") %>
+
+
+
+<div class="ui raised very padded text container segment">
+  <h2>Frequently Asked Questions</h2>
+ 
+  <div class="accordion">
+    <div class="accordion-item">
+      <a>What will be the validity for each course?</a>
+      <div class="content">
+        <p>The validity of a specific course will be mentioned in their respective segments. For live interaction classes the validity will be there for at least 30 days after completion of the course. 
+</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>Can we download the videos?</a>
+      <div class="content">
+        <p>No, you can’t download the videos to your local pc or mobile. You have to watch all videos using the online portal(website).
+</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a> Can we download the given notes?</a>
+      <div class="content">
+        <p>Yes, You can download the given notes.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>How to clear any doubts?</a>
+      <div class="content">
+        <p>For administrative doubts, you can mail to gradeup@gmail.com or can call to our toll free number.
+        For your specific doubts on your taken subject , you can post it in the doubt/community portal of        the respective course segment.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>How will we be informed about the live classes?</a>
+      <div class="content">
+        <p> There will be a schedule for every course that contains live interactive classes. Even you will be informed one day prior if any change has been made over it via sms or mail.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>Can we learn the topic at our own pace?</a>
+      <div class="content">
+        <p> You can learn from the videos whenever you want and you can also select between different playback speeds. Also, we try our best to give you subtitles for every recorded video.
+</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>Is the real-time peer to peer editable screen interactive enough?</a>
+      <div class="content">
+        <p> Our real-time peer to peer editable screen interface is best of its kind. There will be approx no lagging over a good internet connection. It will give you the flavour of our traditional classroom board.
+</p>
+      </div>
+    </div>
+     <div class="accordion-item">
+      <aCan the price be reduced for a specific course for a person?</a>
+      <div class="content">
+        <p> In this kind of scenario, please contact our managing body. They will decide further.
+
+</p>
+      </div>
+    </div>
+     <div class="accordion-item">
+      <a>Is there any test after the end of a course?</a>
+      <div class="content">
+        <p> There are a lot of quizzes and assignments for all courses.  For some courses, there may be a final proctored test.
+
+</p>
+      </div>
+    </div>
+     <div class="accordion-item">
+      <a>How to pay the fee?
+</a>
+      <div class="content">
+        <p> You can pay the fee using a debit or a credit card online. Our transaction portal is completely secured. 
+</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<script>
+const items = document.querySelectorAll(".accordion a");
+ 
+function toggleAccordion(){
+  this.classList.toggle('active');
+  this.nextElementSibling.classList.toggle('active');
+}
+ 
+items.forEach(item => item.addEventListener('click', toggleAccordion)); </script>
+<%- include("partials/foot") %>

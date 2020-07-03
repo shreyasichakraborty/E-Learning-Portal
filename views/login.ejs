@@ -1,0 +1,36 @@
+<%- include("partials/header") %>
+
+
+<div class="ui main text container segment" style="width:400px;">
+	<h2>
+		Login Form
+	</h2>
+	<form action="/login" method="POST">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Username</label>
+			<input type="text" class="form-control" id="exampleInputEmail1" name="username">
+  		</div>
+  		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" id="exampleInputPassword1" name="password">
+		</div>
+		
+		
+		<div class="form-group">
+			<label for="exampleInputPassword1">Admin Code</label>
+			<input type="text" class="form-control" id="exampleInputPassword1" name="adminCode">
+		</div>
+		
+		
+		
+		<a href="/forgotpassword">Forgot Password</a>
+		<a href="/register" class="float-right">New User</a>
+		<br>
+		<br>
+    	<button class="btn btn-block btn-success" type="submit">Login</button>
+		</form>
+</div>
+	
+<%- include("partials/foot") %>
+
+

@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container mt-2">
+	  <div class="row">
+	  	  	<div class="col-1 rounded-circle" style="background-color:pink;"><h1 class="display-4" style="text-align:center; padding-top:15px;" ><%= user.firstname.charAt(0) %><%= user.lastname.charAt(0) %></h1>
+		  	</div>
+	  	  	<div class="col-7">
+				<h1 class="display-4"><%= user.firstname %> <%= user.lastname %></h1>
+				<p class="lead"><%= user.username %></p>
+		 	 </div>
+	</div>
+    </div>
+</div>
+
+<div class="container" style="background-color:#EBDEF0; padding:10px;">
+	<h2 style="color:black;">Purchases</h2>
+<% user.purchases.forEach(function(purchase){ %>
+	<div class="row mb-2">
+		<div class="col-8" style="padding:10px;">
+			<a href="/courses/<%= purchase.course.id %>" style="color:#E91E63 ; font-size:1.3rem;font-weight:bold;"><%= purchase.course.coursename %></a>
+		</div>
+		<div class="col-4">
+			<a href="#" class="btn btn-dark" style="color:#E91E63; background-color:black;">View Content</a>
+		</div>
+	</div>
+<% }) %>
+		
+</div>
+
+
+
+<%- include("partials/foot") %>

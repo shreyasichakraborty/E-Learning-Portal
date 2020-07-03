@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Grade-Up</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	<script src="https://kit.fontawesome.com/136b4fde49.js" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+	  <a class="navbar-brand" href="/"><i class="laptop icon"></i> Grade-Up</a>
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ml-5">
+        <a class="nav-link" href="/" style="color:#FFEB3B;">Home</a>
+      </li>
+		<% if(!currentUser) { %>
+		<li class="nav-item ml-3">
+		 <a class="nav-link" href="/careers" style="color:#FFEB3B;">Careers</a>
+      </li>
+      <li class="nav-item ml-3">
+        <a class="nav-link" href="/about" style="color:#FFEB3B;">About Us</a>
+      </li> 
+		<li class="nav-item ml-3">
+        <a class="nav-link" href="/offer" style="color:#FFEB3B;">Offers</a>
+      </li>
+      <li class="nav-item dropdown ml-3">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#FFEB3B;">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		     <a class="dropdown-item" href="/courses/#ai">Artificial Intelligence</a>
+			  <a class="dropdown-item" href="/courses/#ds">Data Science</a>
+			  <a class="dropdown-item" href="/courses/#pl">Programming Languages</a>
+			  <a class="dropdown-item" href="/courses/#web">Web Development</a>
+			  <a class="dropdown-item" href="/courses/#cc">Cloud Computing</a>
+			  <a class="dropdown-item" href="/courses/#">Mathematics</a>
+			  <a class="dropdown-item" href="/courses/#ml">Machine Learning</a>
+			  <a class="dropdown-item" href="/courses/#">Physics</a>
+			  <a class="dropdown-item" href="/courses/#">Chemistry</a>
+			  <a class="dropdown-item" href="/courses/#">Biology</a>
+			  <a class="dropdown-item" href="/courses/#">English</a>
+			  <a class="dropdown-item" href="/courses/#apt">Aptitude</a>
+
+        </div>
+      </li>
+		
+		<li class="nav-item ml-3">
+        <a class="nav-link" href="/courses" style="color:#FFEB3B;">Courses
+        </a>
+       
+      </li> <% } else { %>
+		<li class="nav-item dropdown ml-3">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:yellow;">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		      <a class="dropdown-item" href="/courses/#ai">Artificial Intelligence</a>
+			  <a class="dropdown-item" href="/courses/#ds">Data Science</a>
+			  <a class="dropdown-item" href="/courses/#pl">Programming Languages</a>
+			  <a class="dropdown-item" href="/courses/#web">Web Development</a>
+			  <a class="dropdown-item" href="/courses/#cc">Cloud Computing</a>
+			  <a class="dropdown-item" href="/courses/#">Mathematics</a>
+			  <a class="dropdown-item" href="/courses/#ml">Machine Learning</a>
+			  <a class="dropdown-item" href="/courses/#">Physics</a>
+			  <a class="dropdown-item" href="/courses/#">Chemistry</a>
+			  <a class="dropdown-item" href="/courses/#">Biology</a>
+			  <a class="dropdown-item" href="/courses/#">English</a>
+			  <a class="dropdown-item" href="/courses/#apt">Aptitude</a>
+
+
+        </div>
+      </li>
+		
+		<li class="nav-item dropdown ml-3">
+        <a class="nav-link" href="/courses" style="color:yellow">Courses</a>
+      </li>
+		<li class="nav-item ml-3">
+        <a class="nav-link" href="/classes" style="color:yellow">Class Schedules</a>
+      </li>
+		<li class="nav-item ml-3">
+		 <a class="nav-link" href="/exams" style="color:yellow">Assessment</a>
+      </li>
+		<% } %>
+    </ul>
+   <ul class="navbar-nav ml-auto">
+	   <% if(!currentUser) { %>
+	   <li class="nav-item">
+		   <a class=" nav-link ui inverted green button px-4 mr-2" href="/register">Register</a>
+	   </li>
+	   <li class="nav-item">
+		   <a class="nav-link ui inverted purple button px-4" href="/login"> Login </a>
+	   </li>
+	   <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= currentUser._id %>">Logged in as <%= currentUser.firstname %> </a>
+          </li>
+	   
+	   <li class="nav-item">
+		   <a class="nav-link ui inverted yellow button px-4" href="/logout"> Logout </a>
+	   </li>
+	   <%  } %>
+	  </ul>
+  </div>
+</nav>
+	<% if(error && error.length > 0) { %>
+    <div class="alert alert-danger mt-5" role="alert">
+    <%= error %>
+    </div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+    <div class="alert alert-success mt-5" role="alert">
+    <%= success %>
+    </div>
+    <% } %>
+
+	<img src="https://cdn.pixabay.com/photo/2020/04/08/16/32/keyboard-5017973_960_720.jpg" class="img-fluid" alt="Responsive image" style="width: 100%;height: 80%;">
+	
+	<div class="jumbotron jumbotron-fluid mb-0" style="background-color:black;">
+		<div class="row text-center">
+			<div class="col-4"></div>
+			<div class="col-8">
+				<form class="form-inline" action="/courses" method="GET">
+				  <input class="form-control mr-sm-2" type="text" name="search" placeholder="Type Here" aria-label="Search" id="search">
+				  <button class="ui inverted pink button" id="search-button" type="submit" value="Search">Search</button>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="jumbotron jumbotron-fluid mb-0">
+	  	<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+				 	<img src="https://cdn.pixabay.com/photo/2017/02/09/11/40/school-2051712__340.jpg" id="ind_img_1">
+				</div>
+				<div class="col-sm-6">
+				 	<h1 style="color:#1565C0 ">Personalized Classroom For Every Student</h1>
+					<ul>
+						<li style="font-size:2rem; font-weight:bold; color:#2196F3; padding:15px;">Live Classes</li>
+						<li style="font-size:2rem; font-weight:bold; color:#2196F3; padding:15px;">Peer-to-Peer Screen Sharing</li>
+						<li style="font-size:2rem; font-weight:bold; color:#2196F3; padding:15px;">Experienced Instructors</li>
+						<li style="font-size:2rem; font-weight:bold; color:#2196F3; padding:15px;">Learning At Your Pace</li>
+						<li style="font-size:2rem; font-weight:bold; color:#2196F3; padding:15px;">Separate Doubt Clearing Sessions</li>
+					</ul>
+					
+					<a href="/register" type="button" class="ui primary big button">Register Now</a>
+					<a href="/offer" type="button" class="ui primary big button">Explore Offers</a>
+				</div>
+			</div>
+		</div> 	
+    </div>
+	
+	<div class="jumbotron jumbotron-fluid mb-0" style="background-color:black;">
+ 		 <div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+				 	<img src="https://cdn.pixabay.com/photo/2020/04/20/20/57/training-5069846__340.jpg" id="ind_img_1">
+				 </div>
+				 <div class="col-sm-6">
+					<h1 style="color:#E91E63 ;">Opportunity For Instructors</h1>
+					<ul>
+						<li style="font-size:1.9rem; font-weight:bold; color:#F48FB1; padding:15px;">Empowering With Modern Technology.</li>
+						<li style="font-size:1.9rem; font-weight:bold; color:#F48FB1; padding:15px;">Peer-to-Peer Screen Sharing</li>
+						<li style="font-size:1.9rem; font-weight:bold; color:#F48FB1; padding:15px;">Promising Career</li>
+						<li style="font-size:1.9rem; font-weight:bold; color:#F48FB1; padding:15px;">Turn Your Passion Into Profession</li>
+						<li style="font-size:1.9rem; font-weight:bold; color:#F48FB1; padding:15px;">Earn Money</li>
+					</ul>
+					
+					<a href="/careers/apply" type="button" class="ui inverted pink big button">Apply Now</a>
+					<a href="/careers" type="button" class="ui inverted pink big button">Explore Careers</a>
+				</div>
+			</div>
+		</div> 	
+</div>
+	
+	
+	<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container">
+    <h1 class="display-4 text-center">Why Choose Us?</h1>
+	  <div class="row text-center">
+		  <div class="col-sm-3">
+			  <i class="fas fa-graduation-cap" style="font-size:90px; color:red;"></i>
+			   <p class="lead"  style="font-weight:bold; padding-bottom:1px; padding-top:5px;">Quality Content</p>
+			  <p style="text-align:justify;">We ensure that the student receives best and latest study materials. Our study materials abide by industry standards.</p>
+		  </div>
+		  
+		  <div class="col-sm-3">
+			  <i class="fab fa-studiovinari" style="font-size:90px; color:red;"></i>
+			  <p class="lead"  style="font-weight:bold; padding-top:5px;">Empowering Instructors</p>
+			  <p style="text-align:justify;">Live classes with peer-to peer screen sharing enabling greater interaction between the instructor and student.</p>
+		  </div>
+		  
+		  <div class="col-sm-3">
+			  <i class="fas fa-laptop-code" style="font-size:90px; color:red;"></i>
+			   <p class="lead"  style="font-weight:bold; padding-top:5px;">Personalized Learning</p>
+			  <p style="text-align:justify;">Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning.</p>
+		  </div>
+		  
+		  <div class="col-sm-3">
+			  <i class="fas fa-hand-holding-usd" style="font-size:90px; color:red;"></i>
+			  <p class="lead"  style="font-weight:bold; padding-top:5px;">Pocket Friendly</p>
+			  <p style="text-align:justify;">Best courses at lower prices. Also access to vast range of content with premium offer.</p>
+		  </div>
+	  </div>
+   </div>
+</div>
+	
+	
+	<div class="jumbotron jumbotron-fluid mb-0" style="background-color:black;">
+		<div class="container">
+			<h1 class="display-5" style="color:white;">Explore Courses Our Best Courses</h1>
+			<div class="row text-center py-2">
+				<div class="col-6">
+					<div class="container">
+						<a class="ui orange inverted huge button float-left" href="/courses/#ai">Artificial Intelligence</a><br><br><br>
+						<a class="ui orange inverted huge button float-left" href="/courses/#cc">Cloud Computing</a>
+						<br><br><br>
+						<a class="ui orange inverted huge button float-left" href="/courses/#ds">Data Science and Analytics</a><br><br><br>
+						<a class="ui orange inverted huge button float-left" href="/courses/#ml">Machine Learning</a><br><br><br>
+						<a class="ui orange inverted huge button float-left" href="/courses/#web">Web development</a><br><br><br>
+						<a class="ui orange inverted huge button float-left" href="/courses/#pl">Programming Languages</a>
+					</div>
+				</div> <!--end of left col-->
+				
+				<div class="col-6">
+					<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+							  	<img src="https://cdn.pixabay.com/photo/2020/03/13/17/06/kids-4928563__340.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+							  	<img src="https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090__340.jpg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item">
+							  	<img src="https://cdn.pixabay.com/photo/2015/01/08/18/24/children-593313__340.jpg" class="d-block w-100" alt="...">
+							</div>
+						</div>
+					</div>
+				</div> <!--end of right col -->
+				
+			</div>	<!--end of jumbo row-->
+		</div>
+	</div>
+	
+	
+	<div class="jumbotron jumbotron-fluid mb-0">
+  		<div class="container">
+			<h1 class="display-5">Test Preparations</h1>
+			<div class="row">
+				<div class="col-5">
+					<li style="color:#F44336; font-size:1.5rem; font-weight:bold; padding:5px">GMAT</li>
+					<li style="color:#F44336; font-size:1.5rem; font-weight:bold; padding:5px">IAS</li>
+					<li style="color:#F44336; font-size:1.5rem; font-weight:bold; padding:5px">IIT-JEE</li>
+					<li style="color:#F44336; font-size:1.5rem; font-weight:bold; padding:5px">GATE</li>
+					<li style="color:#F44336; font-size:1.5rem; font-weight:bold; padding:5px">Hackathons</li>
+				</div>
+				<div class="col-7">
+				<p>We provide the best guidance to crack the competitive exams starting at the base level right upto the advanced level with innumerable tips and tricks that helps the student cover tricky questions in a matter of few seconds. The test packs have been customized to cover the full syllabus of the concerned examination. Join us and feel the difference.</p>
+					<a href="/register" type="button" class="btn btn-success py-2">Enroll Now</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	
+
+
+
+<%- include("partials/footer") %>

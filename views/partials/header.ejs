@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Grade-Up</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+	<link rel="stylesheet" href="/stylesheets/pay.css">
+    <script src="https://js.stripe.com/v3/"></script>
+	<link rel="stylesheet" href="/stylesheets/app.css">
+	
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	  <a class="navbar-brand" href="/"><i class="laptop icon"></i> Grade-Up</a>
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ml-5">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+		<% if(!currentUser) { %>
+		<li class="nav-item ml-3">
+		 <a class="nav-link" href="/careers">Careers</a>
+      </li>
+      <li class="nav-item ml-3">
+        <a class="nav-link" href="/about">About Us</a>
+      </li> 
+		<li class="nav-item ml-3">
+        <a class="nav-link" href="/offer">Offers</a>
+      </li>
+      <li class="nav-item dropdown ml-3">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		      <a class="dropdown-item" href="#">Artificial Intelligence</a>
+			  <a class="dropdown-item" href="#">Data Science</a>
+			  <a class="dropdown-item" href="#">Programming Languages</a>
+			  <a class="dropdown-item" href="#">Web Development</a>
+			  <a class="dropdown-item" href="#">Cloud Computing</a>
+			  <a class="dropdown-item" href="#">Mathematics</a>
+			  <a class="dropdown-item" href="#">Machine Learning</a>
+			  <a class="dropdown-item" href="#">Physics</a>
+			  <a class="dropdown-item" href="#">Chemistry</a>
+			  <a class="dropdown-item" href="#">Biology</a>
+			  <a class="dropdown-item" href="#">English</a>
+			  <a class="dropdown-item" href="#">Aptitude</a>
+
+        </div>
+      </li>
+		
+		<li class="nav-item dropdown ml-3">
+        <a class="nav-link" href="/courses">
+         Courses
+        </a>
+       
+      </li> <% } else { %>
+		<li class="nav-item dropdown ml-3">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		      <a class="dropdown-item" href="#ai">Artificial Intelligence</a>
+			  <a class="dropdown-item" href="#ds">Data Science</a>
+			  <a class="dropdown-item" href="#pl">Programming Languages</a>
+			  <a class="dropdown-item" href="#web">Web Development</a>
+			  <a class="dropdown-item" href="#cc">Cloud Computing</a>
+			  <a class="dropdown-item" href="#">Mathematics</a>
+			  <a class="dropdown-item" href="#ml">Machine Learning</a>
+			  <a class="dropdown-item" href="#">Physics</a>
+			  <a class="dropdown-item" href="#">Chemistry</a>
+			  <a class="dropdown-item" href="#">Biology</a>
+			  <a class="dropdown-item" href="#">English</a>
+			  <a class="dropdown-item" href="#apt">Aptitude</a>
+
+
+        </div>
+      </li>
+		
+		<li class="nav-item dropdown ml-3">
+        <a class="nav-link" href="/courses"> Courses</a>
+       
+      </li>
+		<li class="nav-item ml-3">
+        <a class="nav-link" href="/classes">Class Schedules</a>
+      </li>
+		<li class="nav-item ml-3">
+		 <a class="nav-link" href="/exams">Assessment</a>
+      </li>
+		<% } %>
+    </ul>
+   <ul class="navbar-nav ml-auto">
+	   <% if(!currentUser) { %>
+	   <li class="nav-item">
+		   <a class=" nav-link ui inverted green button px-4 mr-2" href="/register">Register</a>
+	   </li>
+	   <li class="nav-item">
+		   <a class="nav-link ui inverted purple button px-4" href="/login"> Login </a>
+	   </li>
+	   <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= currentUser._id %>">Logged in as <%= currentUser.firstname %> </a>
+          </li>
+	   
+	   <li class="nav-item">
+		   <a class="nav-link ui inverted yellow button px-4" href="/logout"> Logout </a>
+	   </li>
+	   <%  } %>
+	  </ul>
+  </div>
+</nav>
+	<% if(error && error.length > 0) { %>
+    <div class="alert alert-danger mt-5" role="alert">
+    <%= error %>
+    </div>
+    <% } %>
+    <% if(success && success.length > 0) { %>
+    <div class="alert alert-success mt-5" role="alert">
+    <%= success %>
+    </div>
+    <% } %>

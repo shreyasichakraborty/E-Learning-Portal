@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+
+<div class="container mt-3">
+    <h1 style="text-align:center;">Add a new comment to <%= course.name %> </h1>
+    <div class="container" style="width:30%; margin:25px auto;">
+        <form action="/courses/<%= course._id %>/comment" method="POST">
+            <div class="form-group">
+				
+                <input class="form-control" type="text" name="comment[text]" placeholder="Comment">
+            </div>
+            <!--
+            <div class="form-group">
+                <input class="form-control" type="text" name="comment[author]" placeholder="Author">
+            </div>
+            -->
+            <div class="form-group">
+                <button class="btn btn-md btn-success btn-block">Submit</button>
+            </div>
+        </form>
+         <a href="/courses">Go back</a>
+    </div>
+</div>
+
+<br>
+<%- include("partials/footer") %>
